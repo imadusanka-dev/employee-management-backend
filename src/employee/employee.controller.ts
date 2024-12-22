@@ -1,4 +1,4 @@
-import { Controller, Post, Body, Get } from '@nestjs/common';
+import { Controller, Post, Body, Get, Delete, Param } from '@nestjs/common';
 import { CreateEmployeeDto } from './dto/create-employee.dto';
 import { EmployeeService } from './employee.service';
 import { ValidationPipe } from 'validation.pipe';
@@ -17,5 +17,10 @@ export class EmployeeController {
   @Get('/')
   getEmployees() {
     return this.employeeService.getEmployees();
+  }
+
+  @Delete('/:id')
+  deleteEmployee(@Param('id') id: number) {
+    return this.employeeService.deleteEmployee(id);
   }
 }

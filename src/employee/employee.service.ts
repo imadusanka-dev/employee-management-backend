@@ -37,4 +37,10 @@ export class EmployeeService {
 
     return { message: 'Success', data };
   }
+
+  async deleteEmployee(id: number) {
+    await this.db.delete(schema.employee).where(eq(schema.employee.id, id));
+
+    return { message: 'Success' };
+  }
 }
