@@ -1,4 +1,12 @@
-import { Controller, Post, Body, Get, Delete, Param } from '@nestjs/common';
+import {
+  Controller,
+  Post,
+  Body,
+  Get,
+  Delete,
+  Param,
+  Put,
+} from '@nestjs/common';
 import { CreateEmployeeDto } from './dto/create-employee.dto';
 import { EmployeeService } from './employee.service';
 import { ValidationPipe } from 'validation.pipe';
@@ -22,5 +30,13 @@ export class EmployeeController {
   @Delete('/:id')
   deleteEmployee(@Param('id') id: number) {
     return this.employeeService.deleteEmployee(id);
+  }
+
+  @Put('/:id')
+  updateEmployee(
+    @Param('id') id: number,
+    @Body(new ValidationPipe()) updateEmployeeDto: CreateEmployeeDto,
+  ) {
+    return this.employeeService.updateEmployee(id, updateEmployeeDto);
   }
 }

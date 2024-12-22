@@ -43,4 +43,14 @@ export class EmployeeService {
 
     return { message: 'Success' };
   }
+
+  async updateEmployee(id: number, updateEmployeeDto: CreateEmployeeDto) {
+    const employee = await this.db
+      .update(schema.employee)
+      .set(updateEmployeeDto)
+      .where(eq(schema.employee.id, id))
+      .returning();
+
+    return { message: 'Success', data: employee[0] };
+  }
 }
