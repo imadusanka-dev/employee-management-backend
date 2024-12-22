@@ -8,6 +8,13 @@
       "when": 1734787012452,
       "tag": "0000_nebulous_stryfe",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1734866100645,
+      "tag": "0001_aspiring_boomerang",
+      "breakpoints": true
     }
   ]
 }
