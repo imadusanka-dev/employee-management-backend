@@ -12,9 +12,11 @@ export class DepartmentService {
   ) {}
 
   async findDepartments() {
-    return await this.db
+    const data = await this.db
       .select()
       .from(schema.department)
       .orderBy(asc(schema.department.name));
+
+    return { message: 'Success', data };
   }
 }
