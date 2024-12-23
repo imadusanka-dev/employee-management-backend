@@ -18,14 +18,14 @@ export const employee = pgTable('employee', {
   nic: varchar('nic', { length: 15 }).notNull().unique(),
   email: varchar('email', { length: 50 }).notNull().unique(),
   phone: varchar('phone', { length: 10 }).notNull(),
-  deparment: integer('department').notNull(),
+  department: integer('department').notNull(),
   createdAt: timestamp('created_at').defaultNow(),
   updatedAt: timestamp('updated_at').defaultNow(),
 });
 
 export const employeeRelations = relations(employee, ({ one }) => ({
   author: one(department, {
-    fields: [employee.deparment],
+    fields: [employee.department],
     references: [department.id],
   }),
 }));

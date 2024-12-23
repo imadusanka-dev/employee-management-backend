@@ -27,7 +27,7 @@ export class EmployeeService {
       .from(schema.employee)
       .innerJoin(
         schema.department,
-        eq(schema.employee.deparment, schema.department.id),
+        eq(schema.employee.department, schema.department.id),
       );
 
     const data = employees.map((emp) => ({

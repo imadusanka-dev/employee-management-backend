@@ -23,5 +23,5 @@ export class CreateEmployeeDto {
   phone: string;
 
   @IsInt()
-  deparment: number;
+  department: number;
 }
