@@ -24,7 +24,7 @@ export const employee = pgTable('employee', {
 });
 
 export const employeeRelations = relations(employee, ({ one }) => ({
-  author: one(department, {
+  department: one(department, {
     fields: [employee.department],
     references: [department.id],
   }),
