@@ -15,8 +15,14 @@ const main = async () => {
   });
   const db = drizzle(pool, { schema });
 
-  //Seed Departments
-  await db.insert(schema.department).values(departments);
+  const existingDepartments = await db.select().from(schema.department);
+
+  if (existingDepartments.length == 0) {
+    //If department table empty, add departments
+    await db.insert(schema.department).values(departments);
+  } else {
+    console.log('Data already exists');
+  }
 
   await pool.end();
 };
